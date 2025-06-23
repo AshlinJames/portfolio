@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASHLIN Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Color Palette & Variables */
+        :root {
+            --primary-color: #1e90ff;
+            /* Dodger Blue */
+            --secondary-color: #ff6347;
+            /* Tomato */
+            --accent-light: #e0f2f7;
+            /* Light blue accent */
+            --text-dark: #2c3e50;
+            /* Deep Blue Grey */
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+            --bg-dark: #1a222c;
+            /* Darker for footer/contact */
+            --card-bg: #ffffff;
+            --line-color: #ced4da;
+            --shadow-light: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 1rem 3rem rgba(0, 0, 0, 0.15);
+        }
+
+        /* General Body and Typography */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Primary font for body */
+            line-height: 1.7;
+            color: var(--text-dark);
+            padding-top: 56px;
+            /* Adjust for fixed navbar height */
+            scroll-behavior: smooth;
+            /* Smooth scrolling for anchor links */
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+            /* Heading font */
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        p {
+            font-weight: 300;
+            /* Lighter body text for readability */
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 3.5rem;
+            position: relative;
+            padding-bottom: 15px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            /* Wider line */
+            height: 5px;
+            /* Thicker line */
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        /* Navbar Customization */
+        .navbar {
+            transition: background-color 0.4s ease-in-out, box-shadow 0.3s ease;
+            background-color: var(--bg-dark);
+            /* Darker navbar */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.7rem;
+            color: var(--primary-color) !important;
+            /* Brand in primary color */
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: var(--secondary-color) !important;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            margin: 0 15px;
+            color: rgba(255, 255, 255, 0.8) !important;
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('./media/3e46ba6b-6002-4c60-a592-7e5c211bf957.jpg') center center no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            color: #fff;
+            padding: 120px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+            color: #fff;
+            /* Ensure heading is white */
+            animation: fadeInTop 1s ease-out;
+        }
+
+        #hero p.lead {
+            font-size: 1.8rem;
+            margin-bottom: 50px;
+            font-weight: 400;
+            animation: fadeInBottom 1s ease-out 0.3s forwards;
+            opacity: 0;
+            /* Start hidden for animation */
+        }
+
+        @keyframes fadeInTop {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInBottom {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            /* Smoother transition */
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-light);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-outline-light {
+            border-color: #fff;
+            color: #fff;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background-color: #fff;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--bg-light);
+            padding: 100px 0;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 400px;
+            /* Slightly larger image */
+            height: auto;
+            object-fit: cover;
+            border: 10px solid #fff;
+            /* Thicker white border */
+            box-shadow: var(--shadow-hover);
+            /* More pronounced shadow */
+            border-radius: 50%;
+            /* Ensure roundness */
+        }
+
+        .biodata-list dt {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 12px;
+        }
+
+        .biodata-list dd {
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        /* Skills Section */
+        #skills {
+            padding: 100px 0;
+            background-color: var(--card-bg);
+            /* Use card background for this section */
+        }
+
+        .skill-card {
+            border: none;
+            border-radius: 15px;
+            /* More rounded corners */
+            transition: all 0.4s ease-in-out;
+            cursor: default;
+            box-shadow: var(--shadow-light);
+            /* Initial subtle shadow */
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            /* Subtle gradient */
+            height: 100%;
+            /* Ensure consistent height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            /* More pronounced lift and slight scale */
+            box-shadow: var(--shadow-hover);
+            /* Stronger shadow on hover */
+            background: linear-gradient(145deg, var(--accent-light), #d1ecf1);
+            /* Gradient on hover */
+        }
+
+        .skill-card .card-body {
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .skill-card i {
+            font-size: 4.5rem;
+            /* Larger icons */
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        .skill-card:hover i {
+            color: var(--secondary-color);
+            /* Change icon color on hover */
+        }
+
+        .skill-card .card-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .skill-card .card-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+
+        /* Resume Section */
+        #resume {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        #resume .resume-item {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #resume .resume-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        #resume .resume-item h4 {
+            color: var(--primary-color);
+            /* Title in primary color */
+            font-weight: 700;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        /* Custom Timeline List Style */
+        .resume-timeline {
+            list-style: none;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        /* Vertical line for the timeline (Default for other timelines if added back) */
+        .resume-timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: var(--line-color);
+        }
+
+        /* Style to remove vertical line for Education timeline */
+        .education-no-line::before {
+            background-color: transparent !important;
+            width: 0 !important;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 35px;
+            /* More space for dot */
+            margin-bottom: 35px;
+            /* More space between items */
+            line-height: 1.6;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Circular dot for each timeline item */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            /* Adjusted left to center dot more visually when no line */
+            top: 6px;
+            /* Vertical alignment */
+            width: 16px;
+            /* Slightly larger dot */
+            height: 16px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid var(--card-bg);
+            /* Thicker border to stand out */
+            z-index: 1;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-item h5 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p.text-muted {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            color: var(--text-light) !important;
+        }
+
+        .timeline-item p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            /* Remove default bullets for custom */
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .timeline-item ul li {
+            position: relative;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        .timeline-item ul li::before {
+            content: '•';
+            /* Custom bullet point */
+            color: var(--primary-color);
+            position: absolute;
+            left: -15px;
+            top: 0;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+
+        /* Skill Badges */
+        .skill-badge {
+            margin: 8px;
+            /* Increased margin */
+            padding: 10px 20px;
+            /* Larger padding */
+            border-radius: 25px;
+            /* More pill-like */
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+            cursor: default;
+            background-color: var(--primary-color);
+            /* Consistent primary color */
+            color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-3px) scale(1.05);
+            /* Lift and slight scale */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: var(--secondary-color);
+            /* Hover color */
+        }
+
+        /* Language List */
+        .language-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .language-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .language-list li i {
+            margin-right: 12px;
+            /* More space for icon */
+            color: #28a745;
+            /* Green checkmark */
+            font-size: 1.2rem;
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .portfolio-item {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: var(--shadow-light);
+            background-color: var(--card-bg);
+            height: 100%;
+            /* Ensure consistent height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 280px;
+            /* Slightly taller images */
+            object-fit: cover;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+            /* Zoom effect on image hover */
+        }
+
+        .portfolio-item .card-body {
+            padding: 1.8rem;
+            flex-grow: 1;
+            /* Allow body to take available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .portfolio-item .card-title {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .portfolio-item .card-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            /* Allow text to grow */
+        }
+
+        .portfolio-item .btn {
+            font-size: 0.9rem;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+
+        .portfolio-item .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .portfolio-item .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-1px);
+            /* Less pronounced lift for smaller buttons */
+        }
+
+        .portfolio-item .btn-outline-secondary {
+            border-color: var(--text-light);
+            color: var(--text-light);
+        }
+
+        .portfolio-item .btn-outline-secondary:hover {
+            background-color: var(--text-light);
+            color: var(--card-bg);
+        }
+
+        /* bar skill */
+        .barcontainer {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 15px;
+            padding: 20px 0px;
+
+        }
+
+        .barcontainer h3 {
+            color: rgb(3, 3, 26);
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .basebar {
+            width: 100%;
+            background-color: rgb(218, 198, 212);
+            border-radius: 10px;
+            position: absolute;
+            height: .7rem;
+            bottom: 0px;
+        }
+
+        #htmlbar {
+            background-color: rgb(110, 8, 220);
+            width: 85%;
+        }
+
+        #cssbar {
+            background-color: rgb(197, 232, 41);
+            width: 95%;
+        }
+
+        #jsbar {
+            background-color: rgb(229, 58, 7);
+            width: 85%;
+        }
+
+        #reactbar {
+            background-color: rgb(192, 115, 14);
+            width: 80%;
+        }
+
+        #angularbar {
+            background-color: rgb(12, 178, 10);
+            width: 88%;
+        }
+
+        #mongodbbar {
+            background-color: rgb(6, 127, 134);
+            width: 98%;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 100px 0;
+            background-color: var(--bg-dark);
+            color: #f8f9fa;
+        }
+
+        #contact .section-title {
+            color: #fff;
+        }
+
+        #contact .section-title::after {
+            background-color: var(--secondary-color);
+            /* Accent line for contact */
+        }
+
+        #contact p {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+
+        #contact .form-control {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: none;
+            /* No border initially */
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            /* Underline style */
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 5px;
+            /* Slightly rounded corners */
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        #contact .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        #contact .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.12);
+            border-color: var(--secondary-color);
+            /* Accent color on focus */
+            box-shadow: none;
+            /* Remove default bootstrap shadow */
+            outline: none;
+        }
+
+        #contact .form-label {
+            color: #f8f9fa;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .social-links a {
+            color: #f8f9fa;
+            font-size: 2.5rem;
+            /* Larger social icons */
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            /* Accent color on hover */
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            /* Even darker footer */
+            color: rgba(255, 255, 255, 0.5) !important;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.7) !important;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--primary-color) !important;
+            text-decoration: underline;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            #hero h1 {
+                font-size: 3.5rem;
+            }
+
+            #hero p.lead {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .skill-card .card-body {
+                padding: 2rem;
+            }
+
+            .skill-card i {
+                font-size: 3.5rem;
+            }
+
+            .timeline-item {
+                padding-left: 30px;
+            }
+
+            .timeline-item::before {
+                left: 3px;
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            #hero {
+                min-height: 80vh;
+                padding: 80px 0;
+            }
+
+            #hero h1 {
+                font-size: 2.8rem;
+            }
+
+            #hero p.lead {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .profile-img {
+                margin-bottom: 30px;
+                max-width: 250px;
+            }
+
+            .skill-card .card-body {
+                padding: 1.5rem;
+            }
+
+            .skill-card i {
+                font-size: 3rem;
+            }
+
+            .portfolio-item img {
+                height: 200px;
+            }
+
+            .portfolio-item .card-body {
+                padding: 1.2rem;
+            }
+
+            .social-links a {
+                font-size: 2rem;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#hero">ASHLIN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#hero">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resume">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="d-flex align-items-center justify-content-center text-center text-white">
+        <div class="container">
+            <h1 class="display-3">Hello, I'm Ashlin James</h1>
+            <p class="lead mb-4">I'm a Full Stack Software Developer</p>
+            <a href="#portfolio" class="btn btn-primary btn-lg me-3">View My Work</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg">Get In Touch</a>
+        </div>
+    </section>
+
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="section-title mb-5">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-md-5 text-center mb-5 mb-md-0">
+                    <img src="./media/luminar door my pic.jpeg" class="img-fluid rounded-circle profile-img"
+                        alt="Your Profile Picture">
+                </div>
+                <div class="col-md-7">
+                    <h3>A Glimpse Into My Journey</h3>
+                    <p class="mt-3">
+                        MCA Graduate with a bachelor's degree in mathematics and a keen interest in the IT field.
+                        Knowledgeable in programming languages such as HTML,CSS and JavaScript, as well as database
+                        management with Mongo db and SQL. Highly motivated to apply my analytical and technical skills
+                        to contribute to innovative projects and continuously learn and grow within a dynamic technology
+                        environment.
+                    </p>
+
+                    <hr class="my-4">
+                    <h3 class="mb-4">Personal Details</h3>
+                    <dl class="row biodata-list">
+                        <dt class="col-sm-4">Full Name</dt>
+                        <dd class="col-sm-8">Ashlin James</dd>
+
+                        <dt class="col-sm-4">Date of Birth</dt>
+                        <dd class="col-sm-8">08 August 2000</dd>
+
+                        <dt class="col-sm-4">Nationality</dt>
+                        <dd class="col-sm-8">Indian</dd>
+
+                        <dt class="col-sm-4">Current Location</dt>
+                        <dd class="col-sm-8">Thrissur, Kerala, India</dd>
+
+                        <dt class="col-sm-4">Email</dt>
+                        <dd class="col-sm-8"><a href="mailto:ashlinjames8@gmail.com"
+                                class="text-decoration-none text-primary">ashlinjames8@gmail.com</a></dd>
+
+                        <dt class="col-sm-4">Phone</dt>
+                        <dd class="col-sm-8">+91-8547689925</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="section-title mb-5">My Expertise</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card skill-card">
+                        <div class="card-body">
+                            <i class="fas fa-code"></i>
+                            <h5 class="card-title">Frontend Development</h5>
+                            <p class="card-text">HTML5, CSS3, JavaScript, React.js,
+                               Bootstrap,Tailwind, Responsive Design</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card skill-card">
+                        <div class="card-body">
+                            <i class="fas fa-server"></i>
+                            <h5 class="card-title">Backend Development</h5>
+                            <p class="card-text">Node.js (Express), JavaScript, RESTful APIs, SQL
+                                (MySQL), MongoDB</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card skill-card">
+                        <div class="card-body">
+                            <i class="fas fa-cloud"></i>
+                            <h5 class="card-title">Cloud & DevOps</h5>
+                            <p class="card-text">AWS (EC2, S3, Lambda), Docker, Git, Linux</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card skill-card">
+                        <div class="card-body">
+                            <i class="fas fa-palette"></i>
+                            <h5 class="card-title">UI/UX & Design</h5>
+                            <p class="card-text">Figma,Prototyping,User
+                                Research</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card skill-card">
+                        <div class="card-body">
+                            <i class="fas fa-brain"></i>
+                            <h5 class="card-title">Problem Solving</h5>
+                            <p class="card-text">Algorithmic Thinking, Data Structures, Debugging, Analytical Skills,
+                                Critical Thinking</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card skill-card">
+                        <div class="card-body">
+                            <i class="fas fa-users-rays"></i>
+                            <h5 class="card-title">Collaboration & Soft Skills</h5>
+                            <p class="card-text">Teamwork, Communication, Adaptability, Time Management, Project
+                                Leadership, Mentoring</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" class="py-5">
+        <div class="container">
+            <h2 class="section-title mb-5">My Resume</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="text-center mb-5">
+                        <p class="lead fw-normal text-secondary">For a detailed overview of my education and
+                            capabilities, please download my full resume.</p>
+                        <a href="./media/ASHLIN JAMES, Resume.pdf" class="btn btn-primary btn-lg mt-3"
+                            download="Ashlin_Resume.pdf">
+                            <i class="fas fa-download me-2"></i>Download Full Resume
+                        </a>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="resume-item">
+                                <h4>Education</h4>
+                                <ul class="resume-timeline education-no-line">
+                                    <li class="timeline-item">
+                                        <h5>Master of Computer Application (MCA)</h5>
+                                        <p class="text-muted">2023-2025 | KTU University</p>
+                                        <p>Nehru College of Engineering & Research Centre (Autonomous),Thrissur</p>
+                                        <p class="fw-bold">CGPA : 8.32 / 10</p>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <h5>Diploma in Health Inspector course</h5>
+                                        <p class="text-muted">2021-2023 |DHS</p>
+                                        <p>Govt.Public Health Training School, Thiruvananthapuram</p>
+                                        <p class="fw-bold">Destintion</p>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <h5>Bachelor of Science in Mathematics (B.Sc.)</h5>
+                                        <p class="text-muted">2018-2021| University of Calicut</p>
+                                        <p>Vimala College (Autonomous), Thrissur</p>
+                                        <p class="fw-bold">CGPA : 5.13 / 6</p>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <h5>Higher Secondary In Biology Science</h5>
+                                        <p class="text-muted">2016-2018| Kerala Government</p>
+                                        <p>Sacred Heart Convent Girls H.S School</p>
+                                        <p class="fw-bold">94 %</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="resume-item">
+                                <h4>Key Competencies</h4>
+                                <div class="d-flex flex-wrap">
+                                    <span class="badge skill-badge">Adaptability</span>
+                                    <span class="badge skill-badge">Problem Solving</span>
+                                    <span class="badge skill-badge">Critical Thinking</span>
+                                    <span class="badge skill-badge">Team Collaboration</span>
+                                    <span class="badge skill-badge">Time Management</span>
+                                    <span class="badge skill-badge">Agile Methodologies</span>
+                                    <span class="badge skill-badge">Project Management</span>
+                                    <span class="badge skill-badge">Public Speaking</span>
+                                    <span class="badge skill-badge">Mentoring</span>
+                                </div>
+                            </div>
+                            <div class="resume-item mt-4">
+                                <h4>Languages</h4>
+                                <ul class="language-list">
+                                    <li><i class="fas fa-check-circle"></i>Malayalam - Native Proficiency</li>
+                                    <li><i class="fas fa-check-circle"></i>English - Full Professional Proficiency</li>
+                                    <li><i class="fas fa-check-circle"></i>Hindi - Conversational Proficiency</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- skill -->
+        <div class="container-fluid py-5" id="skills">
+            <div class="container">
+
+                <div class="row align-items-lg-center">
+                    <div class="col-md-6">
+
+                        <div class="skillcontainer">
+                            <div class="progressbar">
+                                <div class="barcontainer">
+                                    <h3>HTML</h3>
+                                    <span>85%</span>
+                                    <div class="basebar"></div>
+                                    <div id="htmlbar" class="basebar"></div>
+                                </div>
+                                <div class="barcontainer">
+                                    <h3>css</h3>
+                                    <span>95%</span>
+                                    <div class="basebar"></div>
+                                    <div id="cssbar" class="basebar"></div>
+                                </div>
+                                <div class="barcontainer">
+                                    <h3>Angular</h3>
+                                    <span>88%</span>
+                                    <div class="basebar"></div>
+                                    <div id="angularbar" class="basebar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="barcontainer">
+                            <h3>JavaScript</h3>
+                            <span>85%</span>
+                            <div class="basebar"></div>
+                            <div id="jsbar" class="basebar"></div>
+                        </div>
+                        <div class="barcontainer">
+                            <h3>React</h3>
+                            <span>80%</span>
+                            <div class="basebar"></div>
+                            <div id="reactbar" class="basebar"></div>
+                        </div>
+                        <div class="barcontainer">
+                            <h3>MongoDB</h3>
+                            <span>98%</span>
+                            <div class="basebar"></div>
+                            <div id="mongodbbar" class="basebar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+    </section>
+
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <h2 class="section-title mb-5">My Recent Work</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card portfolio-item">
+                        <img src="https://frontenacarchbiosphere.ca/wp-content/uploads/2023/02/full-shot-travel-concept-with-landmarks-1024x576.jpg"
+                            class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">TravelGo-Travel Website</h5>
+                            <p class="card-text">A responsive and visually engaging travel website created using HTML, CSS, and Tailwind CSS. It features destination highlights, tour packages, and a sleek layout designed for a seamless user experience. The site is fully optimized for mobile and desktop, offering a modern design with fast loading and smooth navigation.</p>
+                            <div>
+                                <a href=" https://ashlinjames.github.io/TravelGo/" class="btn btn-primary me-2">View Project</a>
+                                <a href="https://github.com/AshlinJames/TravelGo.git" class="btn btn-outline-secondary"><i
+                                        class="fab fa-github me-1"></i>GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card portfolio-item">
+                        <img src="./media/organic2.jpg"
+                            class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Organic Foods Website</h5>
+                            <p class="card-text">Developed a user-friendly website showcasing organic food
+                            products with a focus on clean design, product categorization, and responsive layout. The
+                            project highlights my skills in front-end development, UI/UX design, and e-commerce
+                            integration.</p>
+                            <div>
+                                <a href="https://ashlinjames.github.io/organic-shop-/" class="btn btn-primary me-2">View Project</a>
+                                <a href="https://github.com/AshlinJames/organic-shop-.git" class="btn btn-outline-secondary"><i
+                                        class="fab fa-github me-1"></i>GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card portfolio-item">
+                        <img src="./media/unnamed.png"
+                            class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Furniture Website</h5>
+                            <p class="card-text">A fully responsive furniture website designed using HTML, CSS, and Bootstrap. This project showcases a modern, clean layout featuring product galleries, category sections, and an attractive homepage. It is optimized for all devices and highlights the elegant presentation of furniture collections with smooth navigation and user-friendly design.</p>
+                            <div>
+                                <a href="https://ashlinjames.github.io/furniture-website/" class="btn btn-primary me-2">View Project</a>
+                                <a href="https://github.com/AshlinJames/furniture-website.git" class="btn btn-outline-secondary"><i
+                                        class="fab fa-github me-1"></i>GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title mb-5">Connect With Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <p class="text-center mb-5">
+                        I'm always open to new opportunities, collaborations, and fascinating conversations. Feel free
+                        to reach out through the form below or connect via social media!
+                    </p>
+                    <form>
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label visually-hidden">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label visually-hidden">Email address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="form-label visually-hidden">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label visually-hidden">Message</label>
+                            <textarea class="form-control" id="message" rows="6" placeholder="Your Message"
+                                required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                        </div>
+                    </form>
+                    <div class="social-links text-center mt-5">
+                        <a href="https://www.linkedin.com/in/ashlin-james-/" target="_blank" aria-label="LinkedIn Profile"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/"target="_blank" aria-label="instagram Profile"><i
+                                class="fab fa-instagram"></i></a>
+                                <a href="https://github.com/AshlinJames" target="_blank" aria-label="github Profile"><i
+                                class="fab fa-github"></i></a>
+                        <a href="mailto:ashlinjames8.com" aria-label="Email Me"><i class="fas fa-envelope"></i></a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-white-50 py-4 text-center">
+        <div class="container">
+            <p class="mb-1">&copy; <span id="current-year"></span> ASHLIN JAMES. All rights reserved.</p>
+            <p class="mb-0">Designed & Developed with Passion using <a href="https://getbootstrap.com/"
+                    class="text-decoration-underline">Bootstrap</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
